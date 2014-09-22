@@ -9,9 +9,8 @@ import (
 	"net/http"
 )
 
-var (
-	Pretty bool
-)
+// set to true to send JSON in pretty format
+var Pretty bool
 
 // Type that contains all needed error data
 type HandlerError struct {

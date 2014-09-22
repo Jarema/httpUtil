@@ -22,7 +22,7 @@ where the User is for example:
 		Lastname string
 	}
 
-You should return struct/map as frist parameter, and error as second.
+You should return struct/map as first parameter, and error as second.
 
 */
 package httpUtil
