@@ -1,7 +1,10 @@
 httpUtil
 ========
 
-library that helps Golang net/http and Gorilla/mux 
+Utility library for http/net, gorilla/mux and any other http/net compatible libs.
+
+Fully compatible with http/net, no external dependencies.
+
 
 ## Documentation
 
