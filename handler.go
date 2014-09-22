@@ -52,5 +52,4 @@ func (fn Handler) ServeHttp(w http.ResponseWriter, r *http.Request) {
 	// write to writer
 	w.Write(json)
 	log.Printf("%s %s %s %d", r.RemoteAddr, r.Method, r.URL, 200) // log request
-	return
 }
