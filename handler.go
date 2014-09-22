@@ -9,6 +9,10 @@ import (
 	"net/http"
 )
 
+var (
+	Pretty bool
+)
+
 // Type that contains all needed error data
 type HandlerError struct {
 	Error   error
@@ -42,7 +46,14 @@ func (fn Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// encode to json
-	json, e := json.Marshal(res)
+	var j []byte
+	var e error
+	if Pretty {
+		j, e = json.MarshalIndent(res, "", "  ")
+	} else {
+		j, e = json.Marshal(res)
+	}
+
 	if e != nil {
 		http.Error(w, "Error marshalling JSON", http.StatusInternalServerError)
 		return
@@ -50,6 +61,7 @@ func (fn Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// set Headers
 	w.Header().Set("Content-Type", "application/json")
 	// write to writer
-	w.Write(json)
+	w.Write(j)
 	log.Printf("%s %s %s %d", r.RemoteAddr, r.Method, r.URL, 200) // log request
+	return
 }
