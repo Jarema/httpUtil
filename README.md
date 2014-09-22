@@ -15,6 +15,10 @@ https://godoc.org/github.com/CerteGroup/httpUtil
 
 Heavily inspired on https://github.com/jakecoffman/go-angular-tutorial
 
+## Contribution
+
+Any contribution and suggestions are VERY welcome. I would be very happy to provide some nice utils for json api servers.
+
 
 ## License
 
