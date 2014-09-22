@@ -23,6 +23,16 @@ where the User is for example:
 	}
 
 You should return struct/map as first parameter, and error as second.
+Remember that err is type HandlerError, so its expected to send Error, Message and Code.
 
+For example:
+
+	func test(w http.ResponseWriter, r *http.Request) (interface{}, *httpUtil.HandlerError) {
+		data, err := returnedErr()s
+		if err != {
+			return nil, &httpUtil.HandlerError{err, "i am broken. please fix me", http.StatusServiceUnavailable}
+		}
+		return data, nil
+	}
 */
 package httpUtil
