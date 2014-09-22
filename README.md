@@ -11,6 +11,8 @@ Fully compatible with http/net, no external dependencies.
 documentation with example usages can be found here:
 https://godoc.org/github.com/CerteGroup/httpUtil
 
+## Credits
+
 Heavily inspired on https://github.com/jakecoffman/go-angular-tutorial
 
 
