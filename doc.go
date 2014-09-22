@@ -11,7 +11,7 @@ To use it with mux:
 the testHandle should look like this:
 
 	func test(w http.ResponseWriter, r *http.Request) (interface{}, *httpUtil.HandlerError) {
-		res := User{1, "John", "Snow"}
+		res := User{"John", "Snow"}
 		return res, nil
 	}
 
