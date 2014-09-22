@@ -22,7 +22,7 @@ type Handler func(w http.ResponseWriter, r *http.Request) (interface{}, *Handler
 
 // method that satisfies Handle interface and let http call it.
 //It should set Header and write to ResponseWriter, then return.
-func (fn Handler) ServeHttp(w http.ResponseWriter, r *http.Request) {
+func (fn Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	//call the Handler
 	res, err := fn(w, r)
