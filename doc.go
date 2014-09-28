@@ -3,6 +3,8 @@ This package is an utility for HTTP API REST JSON servers.
 It handles errors, logs data and provides automatic json encoding
 It's fully compatible with http/net package, so it can also be used with popular gorilla/mux library
 
+### basic usage
+
 To use it with mux:
 
 	r := mux.NewRouter()
@@ -34,5 +36,18 @@ For example:
 		}
 		return data, nil
 	}
+
+### setting up logger
+
+If You will not call LogToFile(), httpUtil will log to stderr, just like default log package.
+If You want to log to file, call:
+
+	f, err := httpUtil.LogToFile("./logs", "http.log")
+	if err != nil {
+		//handle error
+	}
+	defer f.Close()
+
+f.Close is needed to close file where logs are being pushed.
 */
 package httpUtil
