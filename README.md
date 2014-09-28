@@ -3,6 +3,8 @@ httpUtil
 
 Utility library for http/net, gorilla/mux and any other http/net compatible libs.
 
+### Mainly aimed to help with JSON API servers.
+
 Fully compatible with http/net, no external dependencies.
 
 
