@@ -7,16 +7,37 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 )
 
 // set to true to send JSON in pretty format
 var Pretty bool
+var logger *log.Logger
+
+// if set to true, logs are put into file. False by default
+//var LogToFile bool = false
+
+// logfile name. by default its http.log
+//var Logfile string = "http.log"
 
 // Type that contains all needed error data
 type HandlerError struct {
 	Error   error
 	Message string
 	Code    int
+}
+
+// run this function to log to file instead of stderr. just put name of the file.
+// path example: "./logs"
+// file example: "http.log"
+func LogToFile(path string, file string) (*os.File, error) {
+	filePath := fmt.Sprintf("%s/%s", path, file)
+	f, err := os.OpenFile(filePath, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	if err != nil {
+		return nil, err
+	}
+	logger = log.New(f, "http-log: ", log.Lshortfile)
+	return f, nil
 }
 
 // custom handler type.
@@ -32,14 +53,14 @@ func (fn Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	// check if there was error
 	if err != nil {
-		log.Printf("ERROR: %v\n", err.Error)
+		logger.Printf("ERROR: %v\n", err.Error)
 		http.Error(w, fmt.Sprintf("error: %v", err.Error), err.Code)
 		return
 	}
 
 	// check if response was empty
 	if res == nil {
-		log.Printf("ERROR: response from server is nil\n")
+		logger.Printf("ERROR: response from server is nil\n")
 		http.Error(w, fmt.Sprintf("Internal server error"), http.StatusInternalServerError)
 		return
 	}
@@ -61,6 +82,10 @@ func (fn Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	// write to writer
 	w.Write(j)
-	log.Printf("%s %s %s %d", r.RemoteAddr, r.Method, r.URL, 200) // log request
+	logger.Printf("%s %s %s %d", r.RemoteAddr, r.Method, r.URL, 200) // log request
 	return
+}
+
+func init() {
+	logger = log.New(os.Stderr, "", log.LstdFlags)
 }
