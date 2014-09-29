@@ -1,4 +1,4 @@
-httpUtil [![GoDoc](https://godoc.org/github.com/CerteGroup/httpUtil?status.png)](https://godoc.org/github.com/CerteGroup/httpUtil)
+httpUtil  [![wercker status](https://app.wercker.com/status/d799da5157311fa6b12ee004161e57db/s "wercker status")](https://app.wercker.com/project/bykey/d799da5157311fa6b12ee004161e57db) [![GoDoc](https://godoc.org/github.com/CerteGroup/httpUtil?status.png)](https://godoc.org/github.com/CerteGroup/httpUtil)
 ========
 
 Utility library for http/net, gorilla/mux and any other http/net compatible libs.
