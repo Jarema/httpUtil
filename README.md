@@ -1,4 +1,4 @@
-httpUtil [![GoDoc](https://godoc.org/github.com/certegroup/httpUtil?status.png)](http://godoc.org/github.com/certegroup/httpUtil)
+httpUtil [![GoDoc](https://godoc.org/github.com/CerteGroup/httpUtil?status.png)](https://godoc.org/github.com/CerteGroup/httpUtil)
 ========
 
 Utility library for http/net, gorilla/mux and any other http/net compatible libs.
