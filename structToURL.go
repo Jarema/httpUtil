@@ -1,3 +1,5 @@
+package httpUtil
+
 // ------------ format struct to url form -----------------------------------
 func StructToUrlValues(st interface{}) url.Values {
 
