@@ -1,3 +1,5 @@
+package httpUtil
+
 // This function allows to pass any struct/map, and creates json from it, then writes to http.ResponseWriter
 func WriteJson(w http.ResponseWriter, i interface{}) error {
 
